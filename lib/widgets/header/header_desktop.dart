@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:sdc/app/app_colors.dart';
+import 'package:sdc/app/app_strings.dart';
 import 'package:sdc/app/app_style.dart';
 import 'package:sdc/app/constants.dart';
 
@@ -34,7 +35,7 @@ class _HeaderDesktopState extends State<HeaderDesktop> {
                     ),
                     Gap(5),
                     Text(
-                      "Dentist in Noida",
+                      "${AppString.dentistIn}noida",
                       style: AppStyle.mediumTextStyle,
                     ),
                   ],

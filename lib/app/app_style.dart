@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sdc/app/app_colors.dart';
 
 class AppStyle {
+  //-----> medium text style
   static const mediumTextStyle = TextStyle(
     color: AppColor.yellowSecondary,
-    fontSize: 16.0,
-    fontWeight: FontWeight.w400,
-  );
-  static const mediumBlackTextStyle = TextStyle(
-    color: AppColor.bgLight1,
     fontSize: 16.0,
     fontWeight: FontWeight.w400,
   );
@@ -17,8 +13,25 @@ class AppStyle {
     fontSize: 16.0,
     fontWeight: FontWeight.w700,
   );
+  static const mediumBlackTextStyle = TextStyle(
+    color: AppColor.bgLight1,
+    fontSize: 16.0,
+    fontWeight: FontWeight.w400,
+  );
+
+  //-----> large text style
+  static const largeTextStyle = TextStyle(
+    color: AppColor.yellowSecondary,
+    fontSize: 22.0,
+    fontWeight: FontWeight.w400,
+  );
   static const largeBoldTextStyle = TextStyle(
     color: AppColor.yellowSecondary,
+    fontSize: 22.0,
+    fontWeight: FontWeight.w700,
+  );
+  static const largeBlackTextStyle = TextStyle(
+    color: AppColor.bgLight1,
     fontSize: 22.0,
     fontWeight: FontWeight.w700,
   );
@@ -27,6 +40,8 @@ class AppStyle {
     fontSize: 22.0,
     fontWeight: FontWeight.w700,
   );
+
+  //----->button text style
   static const mainDesktopBodyStyle = TextStyle(
     color: AppColor.whitePrimary,
     height: 1.5,

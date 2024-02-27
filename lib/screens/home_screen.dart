@@ -4,6 +4,7 @@ import 'package:gap/gap.dart';
 import 'package:sdc/app/app_colors.dart';
 import 'package:sdc/app/constants.dart';
 import 'package:sdc/widgets/cards/intro_card.dart';
+import 'package:sdc/widgets/cards/mobile_intro_card.dart';
 import 'package:sdc/widgets/header/drawer.dart';
 import 'package:sdc/widgets/header/header_desktop.dart';
 import 'package:sdc/widgets/header/header_mobile.dart';
@@ -18,13 +19,19 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   CarouselController buttonCarouselController = CarouselController();
+
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _messageController = TextEditingController();
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
   final scrollController = ScrollController();
+
   Color color = AppColor.whiteSecondary;
+
   final List<GlobalKey> navbarKeys = List.generate(4, (index) => GlobalKey());
+
   @override
   void dispose() {
     _nameController.dispose();
@@ -103,23 +110,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: WrapAlignment.center,
                     children: List.generate(
                       3,
-                      (index) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: MouseRegion(
-                          onEnter: (_) {
-                            setState(() {
-                              color = AppColor.yellowPrimary;
-                            });
-                          },
-                          onExit: (_) {
-                            setState(() {
-                              color = AppColor.whiteSecondary;
-                            });
-                          },
-                          child: IntroCard(
-                            color: color,
-                          ),
-                        ),
+                      (index) => MouseRegion(
+                        onEnter: (_) {
+                          setState(() {
+                            color = AppColor.yellowPrimary;
+                          });
+                        },
+                        onExit: (_) {
+                          setState(() {
+                            color = AppColor.whiteSecondary;
+                          });
+                        },
+                        child: constraints.maxWidth >= Constants.desktopWidth
+                            ? IntroCard(color: color)
+                            : MobileIntroCard(color: color),
                       ),
                     ),
                   ),
@@ -188,10 +192,6 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void scrollToIndex(int navIndex) {
-    if (navIndex == 4) {
-      //open blog screen
-      return;
-    }
     final key = navbarKeys[navIndex];
     Scrollable.ensureVisible(
       key.currentContext!,

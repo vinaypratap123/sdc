@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sdc/app/app_colors.dart';
+import 'package:sdc/app/app_images.dart';
 
 class SliderDesktop extends StatefulWidget {
   const SliderDesktop({super.key});
@@ -11,12 +11,10 @@ class SliderDesktop extends StatefulWidget {
 class _SliderDesktopState extends State<SliderDesktop> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
+    return SizedBox(
       width: double.infinity,
-      color: AppColor.yellowPrimary,
       child: Image.asset(
-        "assets/images/pic1.jpeg",
+        AppImage.pic1,
         fit: BoxFit.cover,
       ),
     );

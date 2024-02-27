@@ -5,20 +5,22 @@ import 'package:sdc/app/app_strings.dart';
 import 'package:sdc/app/app_style.dart';
 import 'package:sdc/widgets/custom_botton.dart';
 
-class IntroCard extends StatefulWidget {
+class MobileIntroCard extends StatefulWidget {
   final Color color;
-  const IntroCard({super.key, required this.color});
+  const MobileIntroCard({super.key, required this.color});
 
   @override
-  State<IntroCard> createState() => _IntroCardState();
+  State<MobileIntroCard> createState() => _MobileIntroCardState();
 }
 
-class _IntroCardState extends State<IntroCard> {
+class _MobileIntroCardState extends State<MobileIntroCard> {
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+    final double height = screenSize.height;
+    final double width = screenSize.width;
     return Container(
-      height: 260,
-      width: 340,
+      width: width * 0.85,
       decoration: BoxDecoration(
         color: widget.color,
         borderRadius: BorderRadius.circular(20),
