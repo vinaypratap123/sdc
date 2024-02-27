@@ -17,7 +17,7 @@ class _MobileIntroCardState extends State<MobileIntroCard> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final double height = screenSize.height;
+
     final double width = screenSize.width;
     return Container(
       width: width * 0.85,
