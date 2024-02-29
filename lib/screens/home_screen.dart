@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:sdc/app/app_colors.dart';
 import 'package:sdc/app/constants.dart';
+import 'package:sdc/widgets/about/about_desktop.dart';
+import 'package:sdc/widgets/about/about_mobile.dart';
 import 'package:sdc/widgets/cards/intro_card.dart';
 import 'package:sdc/widgets/cards/mobile_intro_card.dart';
 import 'package:sdc/widgets/header/drawer.dart';
 import 'package:sdc/widgets/header/header_desktop.dart';
 import 'package:sdc/widgets/header/header_mobile.dart';
+import 'package:sdc/widgets/services/desktop_services.dart';
+import 'package:sdc/widgets/services/mobile_service.dart';
 import 'package:sdc/widgets/slider/silder_desktop.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -110,28 +114,37 @@ class _HomeScreenState extends State<HomeScreen> {
                     alignment: WrapAlignment.center,
                     children: List.generate(
                       3,
-                      (index) => MouseRegion(
-                        onEnter: (_) {
-                          setState(() {
-                            color = AppColor.yellowPrimary;
-                          });
-                        },
-                        onExit: (_) {
-                          setState(() {
-                            color = AppColor.whiteSecondary;
-                          });
-                        },
-                        child: constraints.maxWidth >= Constants.desktopWidth
-                            ? IntroCard(color: color)
-                            : MobileIntroCard(color: color),
-                      ),
+                      (index) => constraints.maxWidth >= Constants.desktopWidth
+                          ? IntroCard(color: color)
+                          : MobileIntroCard(color: color),
+                    ),
+                  ),
+                ),
+                const Gap(20),
+                if (constraints.maxWidth >= Constants.desktopWidth)
+                  const AboutDesktop()
+                else
+                  const AboutMobile(),
+                const Gap(20),
+                SizedBox(
+                  width: double.infinity,
+                  child: Wrap(
+                    spacing: 20,
+                    runSpacing: 20,
+                    alignment: WrapAlignment.center,
+                    children: List.generate(
+                      6,
+                      (index) => constraints.maxWidth >= Constants.desktopWidth
+                          ? const DesktopServices()
+                          : const MobileServices(),
                     ),
                   ),
                 ),
 
                 Container(
                   height: 4000,
-                )
+                  color: AppColor.bgLight2,
+                ),
 
                 ///main desktop
                 // if (constraints.maxWidth >= Constants.desktopWidth)

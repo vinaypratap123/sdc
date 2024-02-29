@@ -35,7 +35,7 @@ class CustomButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Appointment", style: AppStyle.mediumBlackTextStyle),
+            Text(btnName, style: AppStyle.mediumBlackTextStyle),
             icon ?? const Gap(0),
           ],
         ),
